@@ -1,0 +1,665 @@
+/* General Styles */
+/* Apply globally to the body */
+.body{
+   font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* peso base */
+  font-style: normal;
+}
+html {
+    scroll-behavior: smooth; /* Enables smooth scrolling globally */
+}
+
+.center2 {
+    display: none; /* Hidden by default */
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+}
+
+/* Preloader Content */
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  width: 10vw;
+}
+.desktop-only { display: none; }
+
+/* Preloader Logo */
+.preloader-logo {
+  width: 70px;
+  height: auto;
+  transition: transform 1s ease-in-out;
+  will-change: transform, opacity;
+  transform: translateZ(0); /* Trigger hardware acceleration */
+}
+
+/* Progress Bar */
+.progress-bar {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.progress-bar::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 100%;
+  background: #fff;
+  transition: width 2s ease-in-out;
+}
+
+.progress-bar.progress-complete::before {
+  width: 100%;
+}
+
+/* Fade Out Preloader */
+.preloader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Move Logo to Header */
+.preloader-logo.move-to-header {
+  transform: translate(var(--target-x), var(--target-y)) scale(0.5);
+  transition: transform 0.8s ease-in-out;
+}
+
+/* Header Logo */
+.header-logo {
+  opacity: 0;
+}
+
+/* Page Transition */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  z-index: 10000;
+  transform: scale(1);
+  opacity: 1;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  pointer-events: none;
+}
+
+.page-transition.shrink {
+  transform: scale(0.3); /* Shrink the page */
+  opacity: 0; /* Fade out */
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    overflow-y: scroll;
+    height: 300vh; /* Allow enough space for scrolling */
+    scrollbar-width: none; 
+    scroll-snap-type: y mandatory;
+    font-family: 'Inter';font-size: 22px;
+    padding: 0;
+    
+  }
+
+
+  /* Blurred Background */
+  .blurred-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 120%;
+    background-position: center;
+    filter: blur(80px);
+    z-index: -1; /* Ensure it stays behind everything */
+    opacity: 1;
+    transform: scale(1.1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.blurred-background {
+    image-rendering: -webkit-optimize-contrast; /* Optimize quality in Chrome */
+    image-rendering: optimize-quality;
+}
+
+/* Add a dark overlay using ::before */
+.blurred-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust darkness here (0.5 = 50% dark) */
+    z-index: 1; /* Stays on top of the blurred background */
+    pointer-events: none; /* Prevent interference with user interactions */
+}
+  
+  /* Hide the scrollbar for WebKit browsers (Chrome, Safari, Edge) */
+  body::-webkit-scrollbar {
+    width: 0 !important; /* Removes scrollbar width */
+    height: 0 !important; /* Removes horizontal scrollbar height */
+  }
+  
+  /* Hide the scrollbar for Firefox */
+  body {
+    scrollbar-width: none !important; /* Hides scrollbar on Firefox */
+  }
+  
+  /* Optional fallback for old browsers (if needed, wrap scrollable content) */
+  .scroll-hidden {
+    overflow-y: scroll !important; /* Enables scrolling */
+    -ms-overflow-style: none !important; /* Internet Explorer */
+  }
+  
+  /* Header */
+  .main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    padding: 32px 35px;
+  }
+  
+  .main-header .logo {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .main-header .menu ul {
+    display: flex;
+    list-style: none;
+    padding: 30px;
+    margin-right: 35px;
+  }
+  
+  .main-header .menu ul li {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .main-header .menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: medium;
+    text-transform: uppercase;
+    font-family: "Inter", sans-serif;
+  }
+/*mobilemenu*/
+.floating-menu{
+    display: none;
+}
+.floating-menu {
+    position: fixed;
+    top: 20px; /* Adjust to stay near the top */
+    right: 20px; /* Align to the right */
+    z-index: 100;
+}
+
+.menu-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    line-height: 40px;
+    padding: 0px;
+
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+.menu-icon,
+.close-icon {
+    width: 40px;
+    height: 40px;
+}
+/* Dark Blurred Overlay */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(28px);
+    background: rgba(0, 0, 0, 0.6);
+    display: flex; /* Hidden by default */
+    flex-direction: column;
+    justify-content: center; /* Align items towards the top */
+    align-items: center; /* Align items closer to the X */
+    padding: 20px 0px; /* Add padding for spacing */
+    z-index: 99;
+    transform-origin: top right; /* Pivot effect from top-right corner */
+    transform: scale(0); /* Start collapsed */
+    opacity: 0;
+    pointer-events: none; /* Prevent interaction while hidden */
+    transition: opacity 0.3s ease;
+    inset: 0;
+    z-index: 9998; /* Smooth opacity transition */
+}
+.contact-overlay-content {
+  background: rgba(255,255,255,0.92);
+  border-radius: 18px;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+  font-family: 'Inter', sans-serif;
+  color: #222;
+  min-width: 340px;
+  width: 60%;
+  position: relative;
+}
+
+.contact-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.contact-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Show overlay when active */
+.menu-overlay.active {
+    display: flex;
+    transform: scale(1); /* Expand the menu smoothly */
+    opacity: 1;
+     pointer-events: auto;  /* Fade in */
+}
+
+/* Menu Items */
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between menu items */
+    text-align: right; /* Align text to the right */
+    margin-top: 80px; /* Add spacing below the X button */
+    margin-right: 30px;
+}
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.10);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  
+  /* Optional: add a subtle gradient for extra depth */
+  /* background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 100%); */
+}
+.overlay-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 20px;
+  line-height: 1;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.681) ;      /* o blanco si el fondo es oscuro */
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.8)
+}
+
+.menu-overlay *, .menu-overlay a { pointer-events: auto; }
+.blurred-background { pointer-events: none !important; }
+.contact-overlay-content {
+  background: rgba(0,0,0,0.42);
+
+  border-radius: 18px;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+  font-family: 'Inter', sans-serif;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 9999!important;
+}
+.contact-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center; /* This centers the image inside the circle */
+  margin-bottom: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  display: block;
+  background-color: black;
+  border: rgba(88, 88, 88, 0.34) solid 0.45px;
+}
+.contact-overlay-content p{
+  color:white; 
+  font-weight: 600;
+  ;
+ }.buttons {
+  display: flex;
+  flex-direction: column;   /* uno debajo del otro */
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;         /* ajusta el ancho máximo */
+}
+
+.btn {
+  display: flex;
+  align-items: center;      /* icono y texto centrados verticalmente */
+  justify-content: center;  /* todo centrado horizontalmente */
+  gap: 12px;                 /* espacio entre icono y texto */
+  text-decoration: none;
+  font-weight: 500;
+  padding: 12px;
+  border-radius: 15px;
+  width: 100%;              /* mismo ancho */
+  box-sizing: border-box;
+  color: white;
+  font-size: 16px;
+}
+
+.email {
+  background-color: #1a73e85d;
+  color: white;
+}
+
+.whatsapp {
+  background-color: #25d36573;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+}
+
+ .contact-desc{
+  font-size: 14px;
+  font-weight: 350!important;
+  color: rgba(255, 255, 255, 0.50)!important;
+  margin-bottom: 30px;
+ }
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align text and icons closer to the right */
+    gap: 40px; /* Space between icon and text */
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    transform: translateY(-30px); /* String-like effect from the right */
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: var(--delay); /* Add staggered animation */
+    padding: 15px 0px;
+}
+
+.menu-item img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Close Button (X) */
+.menu-overlay .close-icon {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+}
+
+
+/*mobilemenu*/
+  
+  .carousel-container {
+    display: flex;
+    height: 100vh;
+    align-items: center; /* Center everything vertically */
+    justify-content: space-between;
+    padding: 60px 0 0; /* Push below the header */
+  }
+  
+  /* Left Titles */
+  .left-slot {
+    flex: 0 0 20%;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 30VW; /* Adjust width as needed */
+  height: 300px; /* Limit the visible area for the iOS picker effect */
+  overflow: hidden; /* Hide overflow for a smooth picker appearance */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+  border-radius: 10px; 
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 10%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 10%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+  mask-type: alpha; /* Ensure alpha transparency works for the mask */
+  -webkit-mask-type: alpha; 
+  scroll-behavior: smooth;
+  scrollbar-width: none!important;
+  }
+  .left-slot ul::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+  
+  .left-slot ul {
+    list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+  scroll-snap-type: y mandatory; /* Enable snap scrolling */
+  overflow-y: scroll;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Inter", sans-serif;
+  }
+  
+  .left-slot .title {
+    font-size: 33px;
+    opacity: 0.5;
+    margin: 5px 0; /* Reduced gap */
+    transition: opacity 0.4s ease, font-size 0.4s ease;
+    scroll-behavior: smooth;
+  padding: 10px 0;
+  color: #D1D1D6;
+  scroll-snap-align: center; /* Snap items to the center */
+  transition: color 0.8s, font-size 0.8s;
+  justify-content: left;
+  text-align: left!important;
+  font-family: "Inter", sans-serif;
+  }
+  
+  .left-slot .title.active {
+    opacity: 1;
+    font-size: 52px; /* Increase size of active title */
+  font-weight: bold;
+  color: white; 
+
+
+  }
+  
+  /* Center Photos */
+  .center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .photo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     /* Enable snapping to vertical scroll */
+    height: 100vh; /* Full viewport height */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    gap:12%;
+
+    scroll-snap-type: y mandatory;
+    
+  
+  }
+  .photo {
+    opacity: 0.5;
+    transform: scale(0.8);
+    transition: transform 0.8s ease, opacity 0.3s ease;
+    scroll-snap-align: center; /* Ensure snapping aligns photos at the center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh; /* Full viewport height for centering */
+    width: 100%;
+}
+  
+  .photo img {
+    width: 100%;
+    height: auto;
+    max-width: 400px; /* Larger default photo size */
+  }
+  
+  .photo.active {
+    transform: scale(1.8) !important;  /* Larger active photo */
+    opacity: 1;
+  }
+  
+  /* Right Content */
+  .right-content {
+    flex: 0 0 25%;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    padding: 20px;
+    width: 28%;
+  }
+  
+ .tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .tag {
+    border-radius: 41px!important;
+    border: 1px solid var(--windows-stroke-glass-specular, rgba(255, 255, 255, 0.40));
+    background: linear-gradient(0deg, rgba(94, 94, 94, 0.06) 0%, rgba(94, 94, 94, 0.06) 100%), rgba(255, 255, 255, 0.04);
+    background-blend-mode: color-dodge, lighten!important;
+    padding: 10px 15px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.66)
+  }
+  
+  .section-title {
+    font-size: 36px; /* Slightly larger */
+    margin: 10px 0px;
+  }
+  
+  .description {
+    font-size: 17px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    width: 80%;
+    color: rgba(242, 242, 247, 0.79);
+  }
+  .action-button{
+    border-radius: 31px;
+    background-color: rgba(255, 255, 255, 0.16);
+    background-blend-mode: lighten;
+    height: 30%;
+    padding: 10px 15px;
+    margin: 20px 0px;
+    border: 0.35pt solid #D1D1D6;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .site-footer {
+    position: fixed; /* Keeps it fixed at the bottom */
+    bottom: 35px;
+    left: 32px;
+    width: 100%; /* Stretch across the entire width */
+    color: rgba(255, 255, 255, 0.8); /* Dimmed white text */
+    font-size: 0.7em; /* Slightly smaller text */
+    padding: 10px 20px; /* Padding for spacing */
+    text-align: left; /* Align the text to the left */
+    z-index: 1000; /* Ensure it sits above other elements */
+    font-family: "Inter", sans-serif; /* Clean font style */
+  }
+
+.site-footer.custom-footer {
+  position: static !important;
+}
+
+
+/* statics showcase */
+

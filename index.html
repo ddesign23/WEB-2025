@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Smooth Scroll Centered Carousel</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <div class="page-transition"></div>
+<!-- Preloader -->
+<div class="preloader">
+  <div class="preloader-content">
+      <img src="assets/svg/ds.svg" alt="Logo" class="preloader-logo">
+      <div class="progress-bar">
+          <div class="progress-fill"></div>
+      </div>
+  </div>
+</div>
+    <div class="blurred-background"></div>
+     <!-- Header -->
+  <header class="main-header">
+    <div class="logo"><a href="index.html"><img src="assets/svg/ds.svg" class="header-logo" alt="logo"/></a></div>
+    <nav class="menu">
+      <ul>
+        <li><a href="#contact" data-open-contact>Contact</a></li>
+      </ul>
+    </nav>
+    <div class="floating-menu">
+        <div class="menu-button">
+            <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+               
+                <path d="M12 8v8m-4-4h8" stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                
+                <path d="M8 8l8 8m0-8l-8 8" stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </div>
+    </div>
+    <div class="menu-overlay">
+  <div class="contact-overlay-content liquid-glass">
+    <button class="overlay-close desktop-only" aria-label="Close" data-close-overlay>×</button>
+    <img src="assets/img/me.png" alt="Denny RJ" class="contact-avatar">
+    <p>Hi, I am Denny RJ.</p>
+    <p class="contact-desc">
+    I’m a UI/UX and graphic designer focused on creating intuitive, engaging digital experiences. I combine creativity with usability to deliver designs that are both visually appealing and highly functional. My goal is to help brands stand out with clear, user-centered solutions.
+  </p>
+ 
+<div class="buttons">
+  <a href="mailto:hola@ddesign.es" class="btn email">
+    <img src="assets/svg/mail-2.svg" alt="email icon" class="icon">
+    Send an email
+  </a>
+
+  <a href="https://wa.me/34681656347" class="btn whatsapp" target="_blank" rel="noopener">
+    <img src="assets/svg/whatsapp.svg" alt="whatsapp icon" class="icon">
+    Contact by WhatsApp
+  </a>
+</div>
+
+
+
+ </div>
+</div>
+  </header>
+  <div class="carousel-container">
+    <!-- Left Titles -->
+    <div class="left-slot">
+      <ul>
+        <li class="title">CHILLZ</li>
+        <li class="title">M&C</li>
+        <li class="title">MAO</li>
+        <li class="title">TOOPS</li>
+        <li class="title">REKIT</li>
+        <li class="title">LE PARISSIAN</li>
+        <li class="title">BIYON</li>
+        <li class="title">SMART DRESS</li>
+        <li class="title">BLACKBOX</li>
+        <li class="title">HIMALIGHT</li>
+        <li class="title">SBC</li>
+        <li class="title">No Matter</li>
+        <li class="title">VIRTUAL SOUL</li>
+        <li class="title">MARCO AMARI</li>
+      </ul>
+    </div>
+
+    <!-- Center Photos -->
+    <div class="center">
+      <div class="photo-container vertical-layout">
+        <div class="photo" id="chillz" data-link="static-CHILLZ.html"><img src="assets/img/chil.png" alt="Vertical 1"></div>
+        <div class="photo" id="mc-1"data-link="static-m&c.html"><img src="assets/img/mc-1.png" alt="Vertical 2"></div>
+        <div class="photo" id="mao" data-link="static-mao.html"><img src="assets/img/MAO-1.png" alt="Vertical 3"></div>
+        <div class="photo" id="toops" data-link="static-TOOPS.html"><img src="assets/img/Toops.png" alt="Vertical 4"></div>
+        <div class="photo" id="reikit" data-link="static-REKIT.html"><img src="assets/img/reikit.png" alt="Vertical 5"></div>
+        <div class="photo" id="pariss"  data-link="static-LA_PARISIANNE.html"><img src="assets/img/paris.png" alt="Vertical 6"></div>
+        <div class="photo" id="biyon" data-link="static-BIYON.html"><img src="assets/img/biyon.png" alt="Vertical 7"></div>
+        <div class="photo" id="smartdress" data-link="static-SMARTDRESS.html"><img src="assets/img/smart-1.png" alt="Vertical 8"></div>
+        <div class="photo" id="blackb" data-link="static-BLACKBOX.html"><img src="assets/img/blacb.png" alt="Vertical 9"></div>
+        <div class="photo" id="hima" data-link="static-HIMALIGHT.html"><img src="assets/img/hima.png" alt="Vertical 10"></div>
+        <div class="photo" id="sbc" data-link="static-SBC.html"><img src="assets/img/SBC.png" alt="Vertical 11"></div>
+        <div class="photo" id="nomatter" data-link="static-NOMATTER.html"><img src="assets/img/nm.png" alt="Vertical 12"></div>
+        <div class="photo" id="vs" data-link="static-Virtualsoul.html"><img src="assets/img/vs.png" alt="Vertical 13"></div>
+        <div class="photo" id="marco" data-link="static-MARCOAMARI.html"><img src="assets/img/marm.png" alt="Vertical 14"></div>
+      </div>
+      </div>
+      <div class="center2">
+        <div class="photo-container horizontal-layout"></div>
+            <div class="photo-v" id="chillzv"><a href="static-CHILLZ.html"><img src="assets/img/chil-z.png" alt="Horizontal 1"></a></div>
+            <div class="photo-v" id="mc-1v"><a href="static-m&c.html"><img src="assets/img/mc-1-v.png" alt="Horizontal 2"></a></div>
+            <div class="photo-v" id="maov"><a href="static-mao.html"><img src="assets/img/MAO-1-v.png" alt="Horizontal 3"></a></div>
+            <div class="photo-v" id="toopsv"><a href="static-TOOPS.html"><img src="assets/img/Toops-v.png" alt="Horizontal 4"></a></div>
+            <div class="photo-v" id="reikitv"><a href="static-REKIT.html"><img src="assets/img/reikit-v.png" alt="Horizontal 5"></a></div>
+            <div class="photo-v" id="parissv"><a href="static-LA_PARISIANNE.html"><img src="assets/img/paris-v.png" alt="Horizontal 6"></a></div>
+            <div class="photo-v" id="biyonv"><a href="static-BIYON.html"><img src="assets/img/biyon-v.png" alt="Horizontal 7"></a></div>
+            <div class="photo-v" id="smartdress"><a href="static-SMARTDRESS.html"><img src="assets/img/smart-1-v.png" alt="Horizontal 8"></a></div>
+            <div class="photo-v" id="blackbv"><a href="static-BLACKBOX.html"><img src="assets/img/blacb-v.png" alt="Horizontal 9"></a></div>
+            <div class="photo-v" id="himav"><a href="static-HIMALIGHT.html"><img src="assets/img/hima-v.png" alt="Horizontal 10"></a></div>
+            <div class="photo-v" id="sbcv"><a href="static-SBC.html"><img src="assets/img/SBC-v.png" alt="Horizontal 11"></a></div>
+            <div class="photo-v" id="nomatterv"><a href="static-NOMATTER.html"><img src="assets/img/nm-v.png" alt="Horizontal 12"></a></div>
+            <div class="photo-v" id="vsv"><a href="static-Virtualsoul.html"><img src="assets/img/vs-v.png" alt="Horizontal 13"></a></div>
+            <div class="photo-v" id="marcov"><a href="static-MARCOAMARI.html"><img src="assets/img/marm-v.png" alt="Horizontal 14"></a></div>
+        </div>  
+    </div>
+
+    <!-- Right Content -->
+    <div class="right-content">
+      <div class="tags">
+        <span class="tag">Branding</span>
+        <span class="tag">Prototypes</span>
+      </div>
+      <h2 class="section-title">My accountant online</h2>
+      <p class="description">
+        Whether you're looking for a free account with news, agenda, and a complete presentation of your commune,
+        or a premium account with all the features available à la carte, don't wait any longer to bring your commune
+        into the digital age.
+      </p>
+      <button id="go-to-project" class="action-button">Go to project</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script src="picker.js"></script>
+  <script src="mobile.js"></script>
+  
+  <footer class="site-footer">
+    <span>&copy; 2025 | D·DESIGN | Denny RJ</span>
+  </footer>
+ 
+</body>
+</html>

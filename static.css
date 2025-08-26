@@ -1,0 +1,156 @@
+/* ...existing code... */
+
+/* Remove all the right-section, phone, figma, and left-slot styles */
+
+/* Keep these for your static page: */
+/* static.css */
+.static-images {
+  display: flex;
+  flex-direction: column;
+  padding: 0 32px; /* Add horizontal padding for left/right margin */
+}
+.static-images img {
+  border-radius: 18px;
+  margin: 24px 0; /* Only vertical margin */
+  width: 100%;    /* Fill the container, not the viewport */
+  box-shadow: 0 2px 24px 0 rgba(0,0,0,0.10);
+  object-fit: cover;
+  display: block;
+  box-sizing: border-box;
+  height: auto;
+}
+.static-images img:last-child {
+  margin-bottom: 10vh;
+}
+.middle-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical center */
+  align-items: center;     /* Horizontal center */
+  margin-top: 0;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+
+.top-content {
+  text-align: center;
+  margin: 0 auto 18px auto;
+  width: 100%;
+  max-width: 700px;
+  gap: 12px;
+  height: auto;
+  margin-bottom: 20px;
+}
+.top-content-center {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.description{
+  margin: auto;
+}
+.tags {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 22px; /* Add this for spacing below tags */
+}
+.section-title {
+  margin-bottom: 22px!important; /* Add this for spacing below tags */
+  }
+  .custom-footer {
+  width: 100%;
+  padding: 0px 0 24px 0;
+  background: none;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  letter-spacing: 0.02em;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.footer-services {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom:10vh;
+  color: white;
+}
+
+.footer-services span {
+  opacity: 0.85;
+  transition: color 0.2s;
+  cursor: default;
+}
+
+.footer-label {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  margin-top: 18px;
+  opacity: 0.85;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.footer-copy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0.7;
+  gap: 32px;              /* Increase gap between items */
+  flex-wrap: wrap;
+  padding: 0 32px;        /* Add horizontal padding */
+}
+
+.footer-copy .footer-left a,
+.footer-copy .footer-right a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.footer-copy .footer-left a:hover,
+.footer-copy .footer-right a:hover {
+  color: #888;
+}
+.footer-copy .footer-center {
+  flex: 0 1 auto;
+  text-align: center;
+  min-width: 480px;
+}
+
+.footer-copy .footer-left,
+.footer-copy .footer-right {
+  min-width: unset;
+}
+
+/* ...existing code... */
+.close-button {
+  position: fixed;
+  top: 18px;
+  right: 24px;
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1002;
+  backdrop-filter: blur(8px);      /* Add this for blur effect */
+  -webkit-backdrop-filter: blur(8px); /* For Safari support */
+}
