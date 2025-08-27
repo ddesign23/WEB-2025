@@ -28,55 +28,61 @@ fadeOutLoading('.iframe-loading-v');
     }, 100); // Adjust delay as needed
   });
   
-  // Tiny top progress preloader (JS-only, no HTML edits)
+// Ultra-light top preloader — no layout shifts, no touch blocking
 (function () {
-  // --- create styles + bar ---
   const css = `
-    #pp-bar{position:fixed;top:0;left:0;height:2px;width:0;z-index:99999;
-      background: linear-gradient(90deg,rgba(255,255,255,.3),rgba(255,255,255,.9));
+    #pp-bar{
+      position:fixed;top:0;left:0;height:2px;width:100vw;
+      transform-origin:left center;transform:scaleX(0);
+      background:linear-gradient(90deg,rgba(255,255,255,.3),rgba(255,255,255,.9));
       box-shadow:0 0 8px rgba(255,255,255,.6);
-      transition: width .25s ease, opacity .25s ease;}
+      transition:transform .25s ease, opacity .25s ease;
+      z-index:99999;pointer-events:none;will-change:transform;contain:strict;
+    }
     #pp-bar.pp-done{opacity:0;}
   `;
-  const style = document.createElement('style');
-  style.textContent = css;
-  document.head.appendChild(style);
+  const st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
-  const bar = document.createElement('div');
-  bar.id = 'pp-bar';
-  document.documentElement.appendChild(bar);
+  const bar = document.createElement('div'); bar.id = 'pp-bar';
+  (document.body || document.documentElement).appendChild(bar);
 
-  // --- progress logic (simulated until real load) ---
-  let prog = 0;
-  const tick = () => {
-    // accelerate at start, slow toward 90%
-    const step = (prog < 60) ? 10 : (prog < 80) ? 5 : 2;
-    prog = Math.min(prog + step, 90);
-    bar.style.width = prog + 'vw';
-  };
-  // start ticking every 300ms
-  const iv = setInterval(tick, 300);
+  let prog = 0, rafId = null, ticking = true;
 
-  // --- when DOM is ready, give it a bump ---
-  const onDom = () => { prog = Math.max(prog, 60); bar.style.width = prog + 'vw'; };
-  if (document.readyState === 'interactive' || document.readyState === 'complete') onDom();
-  else document.addEventListener('DOMContentLoaded', onDom, { once: true });
+  function tick() {
+    if (!ticking) return;
+    // Smooth toward 90%
+    const target = Math.min(90, prog + (prog < 60 ? 0.12 : prog < 80 ? 0.06 : 0.02) * 100);
+    prog = target;
+    bar.style.transform = `scaleX(${prog / 100})`;
+    rafId = requestAnimationFrame(tick);
+  }
+  rafId = requestAnimationFrame(tick);
 
-  // --- finish on full load (all assets) ---
-  const finish = () => {
-    clearInterval(iv);
-    bar.style.width = '100vw';
+  function bump(to) {
+    prog = Math.max(prog, to);
+    bar.style.transform = `scaleX(${prog / 100})`;
+  }
+
+  // DOM ready bump
+  if (document.readyState === 'interactive' || document.readyState === 'complete') bump(0.6 * 100);
+  else document.addEventListener('DOMContentLoaded', () => bump(0.6 * 100), { once: true });
+
+  function finish() {
+    if (!ticking) return;
+    ticking = false;
+    cancelAnimationFrame(rafId);
+    bar.style.transform = 'scaleX(1)';
     requestAnimationFrame(() => {
       bar.classList.add('pp-done');
       setTimeout(() => bar.remove(), 350);
     });
-  };
-  // window 'load' will fire when images/css/js finished
+  }
+
+  // Full load or 8s safety
   if (document.readyState === 'complete') finish();
   else window.addEventListener('load', finish, { once: true });
-
-  // --- safety timeout (in case 'load' never fires) ---
-  setTimeout(finish, 10000);
+  setTimeout(finish, 8000);
 })();
+
 
   
