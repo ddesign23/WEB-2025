@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
             { title: "Rekit", tags: ["Sustainability", "Development"], description: "Smart tools redefining sustainability and eco-friendly solutions." },
             { title: "Le Parissian", tags: ["Sustainability", "Development"], description: "Smart tools redefining sustainability and eco-friendly solutions." },
             { title: "Biyon", tags: ["FinTech", "App Design"], description: "Effortless finances, seamless success with a smart money app." },
-            { title: "Say Cheeese", tags: ["Gaming", "Prototypes"], description: "Next-generation gaming designs for immersive experiences." },
+            { title: "Smart dress", tags: ["Fashion", "Prototype"], description: "Generate your daily outfit with all the clothes on your closet thenaks to the AI." },
             { title: "Blackbox", tags: ["Sustainability", "Development"], description: "Smart tools redefining sustainability and eco-friendly solutions." },
             { title: "Himalight", tags: ["Sustainability", "Development"], description: "Smart tools redefining sustainability and eco-friendly solutions." },
             { title: "Sbc", tags: ["Sustainability", "Development"], description: "Smart tools redefining sustainability and eco-friendly solutions." },
-            { title: "Francis", tags: ["FinTech", "App Design"], description: "Effortless finances, seamless success with a smart money app." },
+             { title: "No Matter", tags: ["Branding", "App design"], description: "Private exclusive events around teh world based in paris." },
             { title: "Virtual Soul", tags: ["Gaming", "Prototypes"], description: "Next-generation gaming designs for immersive experiences." },
             { title: "Marco Amari", tags: ["Sustainability", "Development"], description: "Smart tools redefining sustainability and eco-friendly solutions." },
         ];
